@@ -10,16 +10,16 @@ import company.hrms.core.utilities.results.DataResult;
 import company.hrms.core.utilities.results.Result;
 import company.hrms.core.utilities.results.SuccessDataResult;
 import company.hrms.core.utilities.results.SuccessResult;
-import company.hrms.dataAccess.abstracts.EmployersDao;
+import company.hrms.dataAccess.abstracts.EmployerDao;
 import company.hrms.entities.concretes.Employer;
 
 @Service
 public class EmployerManager implements EmployerService{
 
-	private EmployersDao employerDao;
+	private EmployerDao employerDao;
 	
 	@Autowired
-	public EmployerManager(EmployersDao employerDao) {
+	public EmployerManager(EmployerDao employerDao) {
 		this.employerDao =employerDao;
 	}
 	

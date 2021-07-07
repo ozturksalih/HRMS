@@ -8,5 +8,5 @@ public interface JobSeekerService {
 	DataResult<List<JobSeeker>> getAll();
 	Result add(JobSeeker jobSeeker);
 	Result update(JobSeeker jobSeeker);
-	Result Delete(JobSeeker jobSeeker);
+	Result delete(JobSeeker jobSeeker);
 }

@@ -1,12 +1,14 @@
 package company.hrms.business.concretes;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import company.hrms.business.abstracts.JobSeekerService;
 import company.hrms.core.utilities.results.DataResult;
+import company.hrms.core.utilities.results.ErrorResult;
 import company.hrms.core.utilities.results.Result;
 import company.hrms.core.utilities.results.SuccessDataResult;
 import company.hrms.core.utilities.results.SuccessResult;
@@ -22,6 +24,18 @@ public class JobSeekerManager implements JobSeekerService {
 	public JobSeekerManager(JobSeekerDao jobSeekerDao) {
 		this.jobSeekerDao = jobSeekerDao;
 	}
+	public boolean isAllFieldFilled(JobSeeker jobSeeker) {
+		boolean allFields = Objects.isNull(jobSeeker.getEmail()) ||
+							Objects.isNull(jobSeeker.getDate_of_birth().toString()) ||
+							Objects.isNull(jobSeeker.getFirst_name()) ||
+							Objects.isNull(jobSeeker.getIdentification_no()) ||
+							Objects.isNull(jobSeeker.getLast_name()) ||
+							Objects.isNull(jobSeeker.getPassword());		
+		if(allFields == true) {
+			return false;
+		}
+		return true;
+	}
 	
 	@Override
 	public DataResult<List<JobSeeker>> getAll() {
@@ -31,8 +45,13 @@ public class JobSeekerManager implements JobSeekerService {
 
 	@Override
 	public Result add(JobSeeker jobSeeker) {
-		this.jobSeekerDao.save(jobSeeker);
-		return new SuccessResult("Add Function");
+		if(isAllFieldFilled(jobSeeker)) {
+			
+			this.jobSeekerDao.save(jobSeeker);
+			return new SuccessResult("Add Function");
+		}
+		
+		return new ErrorResult("Errors");
 	}
 
 	@Override
@@ -42,7 +61,7 @@ public class JobSeekerManager implements JobSeekerService {
 	}
 
 	@Override
-	public Result Delete(JobSeeker jobSeeker) {
+	public Result delete(JobSeeker jobSeeker) {
 		this.jobSeekerDao.delete(jobSeeker);
 		return new SuccessResult("delete Function");
 	}
