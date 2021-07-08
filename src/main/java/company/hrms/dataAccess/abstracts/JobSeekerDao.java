@@ -4,5 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import company.hrms.entities.concretes.JobSeeker;
 public interface JobSeekerDao extends JpaRepository<JobSeeker , Integer>{
-
+ JobSeeker findByEmail(String email);
+ JobSeeker findByIdentificationNoEquals(String identityNumber);
 }

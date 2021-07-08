@@ -22,7 +22,7 @@ public class JobSeeker extends User{
 	private String last_name;
 	
 	@Column(name= "identification_no")
-	private String identification_no;
+	private String identificationNo;
 	
 	@Column(name  = "date_of_birth")
 	private Date date_of_birth;
@@ -37,7 +37,7 @@ public class JobSeeker extends User{
 		this.id = id;
 		this.first_name = first_name;
 		this.last_name = last_name;
-		this.identification_no = identification_no;
+		this.identificationNo = identification_no;
 		this.date_of_birth = date_of_birth;
 	}
 
@@ -66,11 +66,11 @@ public class JobSeeker extends User{
 	}
 
 	public String getIdentification_no() {
-		return identification_no;
+		return identificationNo;
 	}
 
 	public void setIdentification_no(String identification_no) {
-		this.identification_no = identification_no;
+		this.identificationNo = identification_no;
 	}
 
 	public Date getDate_of_birth() {
