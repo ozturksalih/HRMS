@@ -12,9 +12,7 @@ import java.util.List;
 
 import company.hrms.business.abstracts.EmployerService;
 import company.hrms.core.utilities.results.DataResult;
-import company.hrms.core.utilities.results.ErrorResult;
 import company.hrms.core.utilities.results.Result;
-import company.hrms.core.utilities.results.SuccessResult;
 import company.hrms.entities.concretes.Employer;
 
 @RestController

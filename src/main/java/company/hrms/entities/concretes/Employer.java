@@ -1,17 +1,23 @@
 package company.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @PrimaryKeyJoinColumn(name = "id" , referencedColumnName = "id")
 @Table(name="employers")
-
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobs"})
 public class Employer extends User {
 	
-	@Column(name = "id")
-	private int id;
+	@Column(name = "id",insertable = false, updatable = false)
+	private int employerId;
 	
 	@Column(name = "company_name")
 	private String company_name;
@@ -24,14 +30,18 @@ public class Employer extends User {
 	
 	@Column(name = "is_activated")
 	private boolean is_activated;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "employer")
+	private List<Job> jobs;
 
 	public Employer() {
 		super();
 	}
 	
-	public Employer(int id, String company_name, String website, String phone_number, boolean is_activated) {
+	public Employer(int employerId, String company_name, String website, String phone_number, boolean is_activated) {
 		super();
-		this.id = id;
+		this.employerId = employerId;
 		this.company_name = company_name;
 		this.website = website;
 		this.phone_number = phone_number;
@@ -39,11 +49,11 @@ public class Employer extends User {
 	}
 
 	public int getId() {
-		return id;
+		return employerId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int employerId) {
+		this.employerId = employerId;
 	}
 
 	public String getCompany_name() {
