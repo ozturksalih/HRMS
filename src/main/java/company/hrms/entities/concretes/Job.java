@@ -19,12 +19,6 @@ public class Job {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	
-	@Column(name="job_position_id")
-	private int job_position_id;
-	
-	@Column(name="city_id")
-	private int city_id;
 
 	@Column(name="description")
 	private String description;
@@ -35,10 +29,10 @@ public class Job {
 	@Column(name = "max_salary")
 	private float max_salary;
 	
-	@Column(name = "createDate")
+	@Column(name = "create_date")
 	private Date createDate;
 	
-	@Column(name = "expirationDate")
+	@Column(name = "expiration_date")
 	private Date expirationDate;
 	
 	@Column(name = "quota")
@@ -47,29 +41,34 @@ public class Job {
 	@Column(name = "is_active")
 	private boolean isActive;
 	
+//	@Column(name = "city_id")
+//	private int cityId;
+//	@Column(name = "employer_id")
+//	private int employerId;
+//	@Column(name = "job_position_id")
+//	private int job_position_id;
+	
 	@ManyToOne()
-	@JoinColumn(name="city_id",insertable = false, updatable = false)
+	@JoinColumn(name="city_id")
 	private City city;
 	
 	@ManyToOne()
-	@JoinColumn(name="employer_id",insertable = false, updatable = false)
+	@JoinColumn(name="employer_id")
 	private Employer employer;
 	
 	
 	@ManyToOne()
-	@JoinColumn(name="job_title_id",insertable = false, updatable = false)
+	@JoinColumn(name="job_title_id")
 	private JobTitle jobTitle;
 	
 	
 	public Job() {
 		super();
 	}
-	public Job(int id, int job_position_id, int city_id, String description, 
+	public Job(int id, String description, 
 			Date createDate, Date expirationDate, int quota , boolean isActive) {
 		super();
 		this.id = id;
-		this.job_position_id = job_position_id;
-		this.city_id = city_id;
 		this.description = description;
 		this.createDate = new Date();
 		this.expirationDate = expirationDate;
@@ -77,12 +76,11 @@ public class Job {
 		this.isActive = isActive;
 	}
 	
-	public Job(int id, int job_position_id, int city_id, String description, float min_salary, float max_salary,
+	public Job(int id,  String description, float min_salary, float max_salary,
 			Date createDate, Date expirationDate, int quota, boolean isActive) {
 		super();
 		this.id = id;
-		this.job_position_id = job_position_id;
-		this.city_id = city_id;
+		
 		this.description = description;
 		this.min_salary = min_salary;
 		this.max_salary = max_salary;
@@ -122,21 +120,21 @@ public class Job {
 	public void setQuota(int quota) {
 		this.quota = quota;
 	}
-	public int getJob_position_id() {
-		return job_position_id;
-	}
-
-	public void setJob_position_id(int job_position_id) {
-		this.job_position_id = job_position_id;
-	}
-
-	public int getCity_id() {
-		return city_id;
-	}
-
-	public void setCity_id(int city_id) {
-		this.city_id = city_id;
-	}
+//	public int getJob_position_id() {
+//		return job_position_id;
+//	}
+//
+//	public void setJob_position_id(int job_position_id) {
+//		this.job_position_id = job_position_id;
+//	}
+//
+//	public int getCity_id() {
+//		return city_id;
+//	}
+//
+//	public void setCity_id(int city_id) {
+//		this.city_id = city_id;
+//	}
 
 	public Date getCreateDate() {
 		return createDate;

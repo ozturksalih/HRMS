@@ -1,6 +1,12 @@
 package company.hrms;
 
+
+
+
+
 import org.springframework.boot.SpringApplication;
+
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +20,10 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class HrmsApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		SpringApplication.run(HrmsApplication.class, args);
-		
-	}
+			}
+	
 	@Bean
     public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2)  

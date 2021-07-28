@@ -8,7 +8,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @PrimaryKeyJoinColumn(name = "id" , referencedColumnName = "id")
@@ -31,7 +31,6 @@ public class Employer extends User {
 	@Column(name = "is_activated")
 	private boolean is_activated;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy = "employer")
 	private List<Job> jobs;
 

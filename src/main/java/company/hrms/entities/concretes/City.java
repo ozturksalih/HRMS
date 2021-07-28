@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -24,11 +23,19 @@ public class City {
 	private int city_id;
 	
 	@Column(name = "city_name")
-	private int city_name;
+	private String city_name;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy = "city")
 	private List<Job> jobs;
+	
+	public City() {
+		super();
+	}
+	public City(int city_id, String city_name) {
+		super();
+		this.city_id = city_id;
+		this.city_name = city_name;
+	}
 	
 	public int getId() {
 		return city_id;
@@ -36,18 +43,12 @@ public class City {
 	public void setId(int city_id) {
 		this.city_id = city_id;
 	}
-	public int getCity_name() {
+	public String getCity_name() {
 		return city_name;
 	}
-	public void setCity_name(int city_name) {
+	public void setCity_name(String city_name) {
 		this.city_name = city_name;
 	}
-	public City() {
-		super();
-	}
-	public City(int city_id, int city_name) {
-		super();
-		this.city_name = city_name;
-	}
+	
 	
 }

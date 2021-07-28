@@ -65,7 +65,7 @@ public class JobSeekerManager implements JobSeekerService {
 		boolean allFields = Objects.isNull(jobSeeker.getEmail()) ||
 							Objects.isNull(jobSeeker.getDate_of_birth().toString()) ||
 							Objects.isNull(jobSeeker.getFirst_name()) ||
-							Objects.isNull(jobSeeker.getIdentification_no()) ||
+							Objects.isNull(jobSeeker.getIdentificationNo()) ||
 							Objects.isNull(jobSeeker.getLast_name()) ||
 							Objects.isNull(jobSeeker.getPassword());		
 		if(allFields == true) {
@@ -92,7 +92,7 @@ public class JobSeekerManager implements JobSeekerService {
 		if(this.jobSeekerDao.findByEmail(jobSeeker.getEmail()) != null) {
 			return new ErrorResult("This email address already in the database");
 		}
-		else if(this.jobSeekerDao.findByIdentificationNoEquals(jobSeeker.getIdentification_no())!= null) {
+		else if(this.jobSeekerDao.findByIdentificationNoEquals(jobSeeker.getIdentificationNo())!= null) {
 			return new ErrorResult("This identity number already in the database");
 		}
 		else if(!isAllFieldFilled(jobSeeker).isSuccess()) {

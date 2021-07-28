@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -20,7 +19,6 @@ public class JobTitle {
 	@Column(name="job_title")
 	private String job_title;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy = "jobTitle")
 	private List<Job> jobs;
 	

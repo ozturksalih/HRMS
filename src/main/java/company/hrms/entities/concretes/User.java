@@ -1,6 +1,10 @@
 package company.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -18,6 +22,10 @@ public class User {
 	
 	@Column(name="password")
 	private String password;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy  = "user")
+	private List<Image> images;
 	
 	public User() {
 		super();
